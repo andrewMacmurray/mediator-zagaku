@@ -1,39 +1,24 @@
 package washingmachine;
 
-import doubles.FakeMotor;
-import doubles.FakeValve;
-import org.junit.Before;
+import doubles.MediatorSpy;
 import org.junit.Test;
-import washingmachine.Heater;
-import washingmachine.Motor;
-import washingmachine.Valve;
+import washingmachine.components.Heater;
 
+import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 
 public class HeaterTest {
 
-    private FakeMotor fakeMotor;
-    private Heater heater;
-
-    @Before
-    public void setup() {
-        FakeValve fakeValve = new FakeValve();
-        fakeMotor = new FakeMotor(fakeValve);
-        heater = new Heater(fakeMotor);
-    }
-
-    @Test
-    public void setLowTemperature() {
-        fakeMotor.rotateDrum(700);
-
-        heater.setTemperature(35);
-        assertEquals(fakeMotor.motorSpeed, 700);
-    }
-
     @Test
     public void setTemperature() {
+        MediatorSpy mediatorSpy = new MediatorSpy();
+        Heater heater = new Heater();
+        heater.setMediator(mediatorSpy);
+
         heater.setTemperature(40);
-        assertEquals(fakeMotor.motorSpeed, 0);
+
+        assertTrue(mediatorSpy.checkTemperatureCalled);
+        assertEquals(40, mediatorSpy.checkedTemperature );
     }
 
 }

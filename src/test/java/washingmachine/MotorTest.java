@@ -1,32 +1,34 @@
 package washingmachine;
 
-import doubles.FakeValve;
+import doubles.MediatorSpy;
 import org.junit.Before;
 import org.junit.Test;
+import washingmachine.components.Motor;
 
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class MotorTest {
 
-    private FakeValve fakeValve;
+    private MediatorSpy mediatorSpy;
     private Motor motor;
 
     @Before
     public void setup() {
-        fakeValve = new FakeValve();
-        motor = new Motor(fakeValve);
+        mediatorSpy = new MediatorSpy();
+        motor = new Motor();
+        motor.setMediator(mediatorSpy);
+    }
+
+    @Test
+    public void rotateDrum() {
+        motor.rotateDrum(700);
+        assertTrue(mediatorSpy.adjustTemperatureCalled);
     }
 
     @Test
     public void stopMotor() {
         motor.stopMotor();
-        assertFalse(fakeValve.valveOpen);
-    }
-
-    @Test
-    public void startMotor() {
-        motor.rotateDrum(700);
-        assertFalse(fakeValve.valveOpen);
+        assertTrue(mediatorSpy.motorStoppedCalled);
     }
 
 }

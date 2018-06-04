@@ -1,4 +1,4 @@
-import washingmachine.WashingMachine;
+import washingmachine.*;
 
 public class Main {
 
