@@ -18,7 +18,7 @@ public class Heater {
     public void setTemperature(int temperature) {
         System.out.println("adjusting temperature to " + temperature + " degrees");
         this.temperature = temperature;
-        mediator.checkTemperature(temperature);
+        mediator.temperatureSet(temperature);
     }
 
 }

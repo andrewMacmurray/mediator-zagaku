@@ -6,7 +6,7 @@ public class MediatorSpy extends Mediator {
 
     public boolean startCalled = false;
     public boolean valveOpenedCalled = false;
-    public boolean adjustTemperatureCalled = false;
+    public boolean drumSpeedReachedCalled = false;
     public boolean checkTemperatureCalled = false;
     public int checkedTemperature;
     public boolean temperatureReachedCalled = false;
@@ -24,12 +24,12 @@ public class MediatorSpy extends Mediator {
     }
 
     @Override
-    public void adjustTemperature() {
-        adjustTemperatureCalled = true;
+    public void drumSpeedReached() {
+        drumSpeedReachedCalled = true;
     }
 
     @Override
-    public void checkTemperature(int temperature) {
+    public void temperatureSet(int temperature) {
         checkTemperatureCalled = true;
         checkedTemperature = temperature;
     }

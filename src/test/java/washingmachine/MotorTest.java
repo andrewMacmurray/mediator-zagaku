@@ -22,7 +22,7 @@ public class MotorTest {
     @Test
     public void rotateDrum() {
         motor.rotateDrum(700);
-        assertTrue(mediatorSpy.adjustTemperatureCalled);
+        assertTrue(mediatorSpy.drumSpeedReachedCalled);
     }
 
     @Test

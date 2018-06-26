@@ -14,7 +14,7 @@ public class Motor {
     public void rotateDrum(int speed) {
         this.speed = speed;
         System.out.println("Motor is spinning at " + speed + " rpm");
-        mediator.adjustTemperature();
+        mediator.drumSpeedReached();
     }
 
     public void stopMotor() {

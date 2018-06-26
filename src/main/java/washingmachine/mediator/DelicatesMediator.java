@@ -29,13 +29,13 @@ public class DelicatesMediator extends Mediator {
     }
 
     @Override
-    public void adjustTemperature() {
+    public void drumSpeedReached() {
         sensor.setRequiredTemp(30);
         heater.setTemperature(30);
     }
 
     @Override
-    public void checkTemperature(int temperature) {
+    public void temperatureSet(int temperature) {
         sensor.checkTemperatureHighEnough(temperature);
     }
 

@@ -12,9 +12,9 @@ public abstract class Mediator {
 
     public abstract void valveOpened();
 
-    public abstract void adjustTemperature();
+    public abstract void drumSpeedReached();
 
-    public abstract void checkTemperature(int temperature);
+    public abstract void temperatureSet(int temperature);
 
     public abstract void temperatureReached();
 

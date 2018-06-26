@@ -24,13 +24,13 @@ public class CottonMediator extends Mediator {
     }
 
     @Override
-    public void adjustTemperature() {
+    public void drumSpeedReached() {
         sensor.setRequiredTemp(40);
         heater.setTemperature(40);
     }
 
     @Override
-    public void checkTemperature(int temp) {
+    public void temperatureSet(int temp) {
         sensor.checkTemperatureHighEnough(temp);
     }
 
